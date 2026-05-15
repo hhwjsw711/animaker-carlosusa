@@ -42,10 +42,13 @@ export default defineConfig({
       pages: [
         { path: "/", prerender: { headers: { "Accept-Language": "pt-BR" } } },
         { path: "/en", prerender: { headers: { "Accept-Language": "en-US" } } },
+        { path: "/zh", prerender: { headers: { "Accept-Language": "zh-CN" } } },
         { path: "/privacy", prerender: { headers: { "Accept-Language": "pt-BR" } } },
         { path: "/terms", prerender: { headers: { "Accept-Language": "pt-BR" } } },
         { path: "/en/privacy", prerender: { headers: { "Accept-Language": "en-US" } } },
         { path: "/en/terms", prerender: { headers: { "Accept-Language": "en-US" } } },
+        { path: "/zh/privacy", prerender: { headers: { "Accept-Language": "zh-CN" } } },
+        { path: "/zh/terms", prerender: { headers: { "Accept-Language": "zh-CN" } } },
       ],
     }),
     viteReact(),

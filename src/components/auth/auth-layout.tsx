@@ -19,6 +19,7 @@ import Logo from "@/components/ui/custom/logo";
 const LANGUAGE_LABELS: Record<string, string> = {
   "en-US": "English",
   "pt-BR": "Português",
+  "zh-CN": "简体中文",
 };
 
 interface AuthLayoutProps {
@@ -108,6 +109,9 @@ export function AuthLayout({ children }: AuthLayoutProps) {
               </DropdownMenuRadioItem>
               <DropdownMenuRadioItem value="pt-BR">
                 {LANGUAGE_LABELS["pt-BR"]}
+              </DropdownMenuRadioItem>
+              <DropdownMenuRadioItem value="zh-CN">
+                {LANGUAGE_LABELS["zh-CN"]}
               </DropdownMenuRadioItem>
             </DropdownMenuRadioGroup>
           </DropdownMenuContent>

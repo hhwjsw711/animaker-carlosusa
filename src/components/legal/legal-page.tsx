@@ -5,11 +5,13 @@ import { LandingHeader } from "../landing/landing-header";
 import { LandingFooter } from "../landing/landing-footer";
 import { PrivacyPtBR } from "./privacy/privacy-pt-br";
 import { PrivacyEnUS } from "./privacy/privacy-en-us";
+import { PrivacyZhCN } from "./privacy/privacy-zh-cn";
 import { TermsPtBR } from "./terms/terms-pt-br";
 import { TermsEnUS } from "./terms/terms-en-us";
+import { TermsZhCN } from "./terms/terms-zh-cn";
 
 export type LegalPageType = "privacy" | "terms";
-type Lang = "pt-BR" | "en-US";
+type Lang = "pt-BR" | "en-US" | "zh-CN";
 
 interface LegalPageProps {
   initialLang: Lang;
@@ -18,9 +20,13 @@ interface LegalPageProps {
 
 function Content({ type, lang }: { type: LegalPageType; lang: Lang }) {
   if (type === "privacy") {
-    return lang === "pt-BR" ? <PrivacyPtBR /> : <PrivacyEnUS />;
+    if (lang === "pt-BR") return <PrivacyPtBR />;
+    if (lang === "zh-CN") return <PrivacyZhCN />;
+    return <PrivacyEnUS />;
   }
-  return lang === "pt-BR" ? <TermsPtBR /> : <TermsEnUS />;
+  if (lang === "pt-BR") return <TermsPtBR />;
+  if (lang === "zh-CN") return <TermsZhCN />;
+  return <TermsEnUS />;
 }
 
 export function LegalPage({ initialLang, type }: LegalPageProps) {

@@ -1,7 +1,7 @@
 import { createIsomorphicFn } from "@tanstack/react-start";
 import { getCookie, getRequestHeader } from "@tanstack/react-start/server";
 
-export type Lang = "pt-BR" | "en-US";
+export type Lang = "pt-BR" | "en-US" | "zh-CN";
 
 /**
  * URL prefix → language map. Default language (pt-BR) has NO prefix: pt-BR
@@ -13,10 +13,12 @@ export type Lang = "pt-BR" | "en-US";
  */
 const PREFIX_TO_LANG: Record<string, Lang> = {
   en: "en-US",
+  zh: "zh-CN",
 };
 
 const LANG_TO_PREFIX: Record<Lang, string | null> = {
   "en-US": "en",
+  "zh-CN": "zh",
   "pt-BR": null,
 };
 
@@ -69,17 +71,21 @@ export const getCurrentLang = createIsomorphicFn()
   .client((): Lang => {
     if (typeof document === "undefined") return "pt-BR";
     const match = document.cookie.match(/nivo-lang=([^;]+)/);
-    if (match?.[1] === "en-US" || match?.[1] === "pt-BR") return match[1];
-    if (typeof navigator !== "undefined" && /^en/i.test(navigator.language ?? "")) {
-      return "en-US";
+    if (match?.[1] === "en-US" || match?.[1] === "pt-BR" || match?.[1] === "zh-CN") return match[1];
+    if (typeof navigator !== "undefined") {
+      const navLang = navigator.language ?? "";
+      if (/^zh/i.test(navLang)) return "zh-CN";
+      if (/^en/i.test(navLang)) return "en-US";
     }
     return "pt-BR";
   })
   .server((): Lang => {
     const cookie = getCookie("nivo-lang");
-    if (cookie === "en-US" || cookie === "pt-BR") return cookie;
+    if (cookie === "en-US" || cookie === "pt-BR" || cookie === "zh-CN") return cookie;
     const accept = getRequestHeader("accept-language") ?? "";
-    if (/^en(-|_|,|;|$)/i.test(accept.trim())) return "en-US";
+    const trimmed = accept.trim();
+    if (/^zh(-|_|,|;|$)/i.test(trimmed)) return "zh-CN";
+    if (/^en(-|_|,|;|$)/i.test(trimmed)) return "en-US";
     return "pt-BR";
   });
 

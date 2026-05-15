@@ -1,4 +1,4 @@
-export type LangCode = "pt-BR" | "en-US";
+export type LangCode = "pt-BR" | "en-US" | "zh-CN";
 
 export const SITE_URL =
   (import.meta.env.VITE_SITE_URL as string | undefined) ?? "https://vertex.app";
@@ -16,6 +16,7 @@ export interface MetaInput {
   alternates?: {
     "pt-BR": string;
     "en-US": string;
+    "zh-CN": string;
     "x-default": string;
   };
   ogType?: "website" | "article";

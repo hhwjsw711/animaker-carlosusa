@@ -61,6 +61,7 @@ function timestampToDateDisplay(ts: number, language: string): string {
   const y = date.getFullYear();
   const m = String(date.getMonth() + 1).padStart(2, "0");
   const d = String(date.getDate()).padStart(2, "0");
+  if (language === "zh-CN") return `${y}/${m}/${d}`;
   if (language === "pt-BR") return `${d}/${m}/${y}`;
   return `${m}/${d}/${y}`;
 }
@@ -70,7 +71,11 @@ function dateDisplayToTimestamp(display: string, language: string): number | nul
   if (digits.length !== 8) return null;
 
   let day: number, month: number, year: number;
-  if (language === "pt-BR") {
+  if (language === "zh-CN") {
+    year = parseInt(digits.slice(0, 4), 10);
+    month = parseInt(digits.slice(4, 6), 10);
+    day = parseInt(digits.slice(6, 8), 10);
+  } else if (language === "pt-BR") {
     day = parseInt(digits.slice(0, 2), 10);
     month = parseInt(digits.slice(2, 4), 10);
     year = parseInt(digits.slice(4, 8), 10);

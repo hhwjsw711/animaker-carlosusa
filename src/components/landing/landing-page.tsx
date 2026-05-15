@@ -9,7 +9,7 @@ import { LandingFaq } from "./landing-faq";
 import { LandingCta } from "./landing-cta";
 import { LandingFooter } from "./landing-footer";
 
-type Lang = "pt-BR" | "en-US";
+type Lang = "pt-BR" | "en-US" | "zh-CN";
 
 interface LandingPageProps {
   initialLang: Lang;

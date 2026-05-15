@@ -57,6 +57,7 @@ function dateToDisplay(date: Date, language: string): string {
   const y = date.getFullYear();
   const m = String(date.getMonth() + 1).padStart(2, "0");
   const d = String(date.getDate()).padStart(2, "0");
+  if (language === "zh-CN") return `${y}/${m}/${d}`;
   if (language === "pt-BR") return `${d}/${m}/${y}`;
   return `${m}/${d}/${y}`;
 }

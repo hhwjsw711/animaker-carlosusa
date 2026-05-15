@@ -40,7 +40,11 @@ export function displayToIsoAllowFuture(
   let month: number;
   let year: number;
 
-  if (language === "pt-BR") {
+  if (language === "zh-CN") {
+    year = parseInt(digits.slice(0, 4), 10);
+    month = parseInt(digits.slice(4, 6), 10);
+    day = parseInt(digits.slice(6, 8), 10);
+  } else if (language === "pt-BR") {
     day = parseInt(digits.slice(0, 2), 10);
     month = parseInt(digits.slice(2, 4), 10);
     year = parseInt(digits.slice(4, 8), 10);

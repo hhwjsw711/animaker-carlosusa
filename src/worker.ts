@@ -26,28 +26,35 @@ function buildSitemapXml(siteUrl: string): string {
 
   const LANDING_ALTS = [
     // pt-BR lives at the root without a prefix; only en-US has the `/en`
-    // prefix. `x-default` points to the canonical pt-BR URL.
+    // prefix; zh-CN has the `/zh` prefix.
+    // `x-default` points to the canonical pt-BR URL.
     { hreflang: "pt-BR", href: `${siteUrl}/` },
     { hreflang: "en-US", href: `${siteUrl}/en` },
+    { hreflang: "zh-CN", href: `${siteUrl}/zh` },
     { hreflang: "x-default", href: `${siteUrl}/` },
   ];
   const PRIVACY_ALTS = [
     { hreflang: "pt-BR", href: `${siteUrl}/privacy` },
     { hreflang: "en-US", href: `${siteUrl}/en/privacy` },
+    { hreflang: "zh-CN", href: `${siteUrl}/zh/privacy` },
     { hreflang: "x-default", href: `${siteUrl}/privacy` },
   ];
   const TERMS_ALTS = [
     { hreflang: "pt-BR", href: `${siteUrl}/terms` },
     { hreflang: "en-US", href: `${siteUrl}/en/terms` },
+    { hreflang: "zh-CN", href: `${siteUrl}/zh/terms` },
     { hreflang: "x-default", href: `${siteUrl}/terms` },
   ];
 
   entries.push(urlEntry(`${siteUrl}/`, "weekly", "1.0", LANDING_ALTS));
   entries.push(urlEntry(`${siteUrl}/en`, "weekly", "0.9", LANDING_ALTS));
+  entries.push(urlEntry(`${siteUrl}/zh`, "weekly", "0.9", LANDING_ALTS));
   entries.push(urlEntry(`${siteUrl}/privacy`, "monthly", "0.3", PRIVACY_ALTS));
   entries.push(urlEntry(`${siteUrl}/en/privacy`, "monthly", "0.3", PRIVACY_ALTS));
+  entries.push(urlEntry(`${siteUrl}/zh/privacy`, "monthly", "0.3", PRIVACY_ALTS));
   entries.push(urlEntry(`${siteUrl}/terms`, "monthly", "0.3", TERMS_ALTS));
   entries.push(urlEntry(`${siteUrl}/en/terms`, "monthly", "0.3", TERMS_ALTS));
+  entries.push(urlEntry(`${siteUrl}/zh/terms`, "monthly", "0.3", TERMS_ALTS));
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">

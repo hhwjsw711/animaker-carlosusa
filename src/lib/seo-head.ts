@@ -13,6 +13,7 @@ export interface BuiltHead {
 const DEFAULT_ALTERNATES = {
   "pt-BR": `${SITE_URL}/pt`,
   "en-US": `${SITE_URL}/en`,
+  "zh-CN": `${SITE_URL}/zh`,
   "x-default": `${SITE_URL}/`,
 } as const;
 
@@ -82,6 +83,7 @@ export function buildHead(input: MetaInput, jsonLd?: unknown): BuiltHead {
     { rel: "canonical", href: input.canonical },
     { rel: "alternate", hrefLang: "pt-BR", href: alternates["pt-BR"] },
     { rel: "alternate", hrefLang: "en-US", href: alternates["en-US"] },
+    { rel: "alternate", hrefLang: "zh-CN", href: alternates["zh-CN"] },
     { rel: "alternate", hrefLang: "x-default", href: alternates["x-default"] },
   ];
 

@@ -45,6 +45,7 @@ import { useTranslation } from "react-i18next";
 const LANGUAGE_LABELS: Record<string, string> = {
   "en-US": "English",
   "pt-BR": "Português",
+  "zh-CN": "简体中文",
 };
 
 interface NavUserProps {
@@ -234,6 +235,9 @@ export function NavUser({ variant = "default" }: NavUserProps) {
                 </DropdownMenuRadioItem>
                 <DropdownMenuRadioItem value="pt-BR">
                   {LANGUAGE_LABELS["pt-BR"]}
+                </DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value="zh-CN">
+                  {LANGUAGE_LABELS["zh-CN"]}
                 </DropdownMenuRadioItem>
               </DropdownMenuRadioGroup>
             </DropdownMenuSubContent>

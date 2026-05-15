@@ -20,11 +20,12 @@ import { useLandingTheme } from "./landing-theme";
 const LANGUAGE_LABELS: Record<string, string> = {
   "en-US": "English",
   "pt-BR": "Português",
+  "zh-CN": "简体中文",
 };
 
 interface LandingFooterProps {
-  currentLang: "pt-BR" | "en-US";
-  onSwitchLanguage: (lang: "pt-BR" | "en-US") => void;
+  currentLang: "pt-BR" | "en-US" | "zh-CN";
+  onSwitchLanguage: (lang: "pt-BR" | "en-US" | "zh-CN") => void;
 }
 
 export function LandingFooter({
@@ -173,7 +174,7 @@ export function LandingFooter({
                     <DropdownMenuRadioGroup
                       value={currentLang}
                       onValueChange={(value) =>
-                        onSwitchLanguage(value as "pt-BR" | "en-US")
+                        onSwitchLanguage(value as "pt-BR" | "en-US" | "zh-CN")
                       }
                     >
                       <DropdownMenuRadioItem value="en-US">
@@ -181,6 +182,9 @@ export function LandingFooter({
                       </DropdownMenuRadioItem>
                       <DropdownMenuRadioItem value="pt-BR">
                         {LANGUAGE_LABELS["pt-BR"]}
+                      </DropdownMenuRadioItem>
+                      <DropdownMenuRadioItem value="zh-CN">
+                        {LANGUAGE_LABELS["zh-CN"]}
                       </DropdownMenuRadioItem>
                     </DropdownMenuRadioGroup>
                   </DropdownMenuContent>

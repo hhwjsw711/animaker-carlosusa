@@ -14,6 +14,7 @@ export interface LegalRouteMeta {
   alternates: {
     "pt-BR": string;
     "en-US": string;
+    "zh-CN": string;
     "x-default": string;
   };
 }
@@ -39,6 +40,14 @@ const META: Record<
       keywords:
         "privacy, GDPR, LGPD, data protection, privacy policy, personal data, Vertex",
     },
+    "zh-CN": {
+      title: "隐私政策 — Vertex",
+      description:
+        "Vertex 如何收集、使用、共享和保护您的个人和业务数据。您的权利、保留期限、安全性和联系方式。",
+      ogAlt: "Vertex 隐私政策",
+      keywords:
+        "隐私, 数据保护, 个人信息, 隐私政策, Vertex",
+    },
   },
   terms: {
     "pt-BR": {
@@ -56,6 +65,14 @@ const META: Record<
       keywords:
         "terms of service, terms of use, agreement, plans, subscription, Vertex",
     },
+    "zh-CN": {
+      title: "服务条款 — Vertex",
+      description:
+        "使用 Vertex 平台的条款和条件，包括套餐、信用计费、合理使用、知识产权和责任。",
+      ogAlt: "Vertex 服务条款",
+      keywords:
+        "服务条款, 使用条款, 协议, 套餐, 订阅, Vertex",
+    },
   },
 };
 
@@ -66,9 +83,10 @@ export function buildLegalMeta(type: LegalPageType, lang: LandingLang): LegalRou
   const meta = META[type][lang];
   const segment = type === "privacy" ? "privacy" : "terms";
   const canonical = `${SITE_URL}${langPrefix(lang)}/${segment}`;
-  const ogLocale = lang === "en-US" ? "en_US" : "pt_BR";
+  const ogLocale = lang === "en-US" ? "en_US" : lang === "zh-CN" ? "zh_CN" : "pt_BR";
   const ptCanonical = `${SITE_URL}/${segment}`;
   const enCanonical = `${SITE_URL}/en/${segment}`;
+  const zhCanonical = `${SITE_URL}/zh/${segment}`;
   return {
     type,
     lang,
@@ -81,6 +99,7 @@ export function buildLegalMeta(type: LegalPageType, lang: LandingLang): LegalRou
     alternates: {
       "pt-BR": ptCanonical,
       "en-US": enCanonical,
+      "zh-CN": zhCanonical,
       "x-default": ptCanonical,
     },
   };

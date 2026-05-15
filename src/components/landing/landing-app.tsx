@@ -1,7 +1,7 @@
 import { LandingPage } from "./landing-page";
 import { LandingThemeProvider } from "./landing-theme";
 
-type Lang = "pt-BR" | "en-US";
+type Lang = "pt-BR" | "en-US" | "zh-CN";
 
 interface LandingAppProps {
   initialLang: Lang;

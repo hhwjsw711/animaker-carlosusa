@@ -1,6 +1,7 @@
 export const DATE_MASKS: Record<string, { mask: string; placeholder: string }> = {
   "pt-BR": { mask: "##/##/####", placeholder: "DD/MM/AAAA" },
   "en-US": { mask: "##/##/####", placeholder: "MM/DD/YYYY" },
+  "zh-CN": { mask: "####/##/##", placeholder: "YYYY/MM/DD" },
 };
 
 export function applyMask(value: string, mask: string): string {
@@ -23,6 +24,7 @@ export function applyMask(value: string, mask: string): string {
 export function isoToDisplay(iso: string, language: string): string {
   if (!iso) return "";
   const [year, month, day] = iso.split("-");
+  if (language === "zh-CN") return `${year}/${month}/${day}`;
   if (language === "pt-BR") return `${day}/${month}/${year}`;
   return `${month}/${day}/${year}`;
 }
@@ -35,7 +37,11 @@ export function displayToIso(display: string, language: string): string | null {
   let month: number;
   let year: number;
 
-  if (language === "pt-BR") {
+  if (language === "zh-CN") {
+    year = parseInt(digits.slice(0, 4), 10);
+    month = parseInt(digits.slice(4, 6), 10);
+    day = parseInt(digits.slice(6, 8), 10);
+  } else if (language === "pt-BR") {
     day = parseInt(digits.slice(0, 2), 10);
     month = parseInt(digits.slice(2, 4), 10);
     year = parseInt(digits.slice(4, 8), 10);

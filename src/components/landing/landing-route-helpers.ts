@@ -20,6 +20,13 @@ const TITLES: Record<
     keywords: "Vertex, management, AI, customers, calendar, finance, platform",
     ogAlt: "Vertex — Intelligent business assistant",
   },
+  "zh-CN": {
+    title: "Vertex — 智能助手，轻松管理您的业务",
+    description:
+      "一站式AI平台，管理客户、服务、产品、日历、财务和团队。",
+    keywords: "Vertex, 管理, AI, 客户, 日历, 财务, 平台",
+    ogAlt: "Vertex — 智能业务助手",
+  },
 };
 
 /**
@@ -27,7 +34,7 @@ const TITLES: Record<
  */
 export function buildLandingHead(lang: LandingLang) {
   const canonical = `${SITE_URL}${langPrefix(lang) || "/"}`;
-  const ogLocale = lang === "en-US" ? "en_US" : "pt_BR";
+  const ogLocale = lang === "en-US" ? "en_US" : lang === "zh-CN" ? "zh_CN" : "pt_BR";
   const meta = TITLES[lang];
   const input = {
     ...meta,
@@ -36,6 +43,7 @@ export function buildLandingHead(lang: LandingLang) {
     alternates: {
       "pt-BR": `${SITE_URL}/`,
       "en-US": `${SITE_URL}/en`,
+      "zh-CN": `${SITE_URL}/zh`,
       "x-default": `${SITE_URL}/`,
     },
   };
