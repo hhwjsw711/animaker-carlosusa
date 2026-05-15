@@ -1,0 +1,10 @@
+name = "nivo-root"
+main = "src/worker.ts"
+compatibility_date = "2026-04-17"
+compatibility_flags = ["nodejs_compat"]
+
+# Runtime vars also set in wrangler.toml for Pages — this file is used by
+# @cloudflare/vite-plugin for the SSR build.
+[vars]
+VITE_CONVEX_URL = "https://effervescent-leopard-444.convex.cloud"
+VITE_SITE_URL = "https://vertex.app"

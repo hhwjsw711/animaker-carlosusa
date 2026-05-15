@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /$
+Allow: /en$
+Disallow: /chat
+Disallow: /customers
+Disallow: /services
+Disallow: /products
+Disallow: /collaborators
+Disallow: /skills
+Disallow: /agents
+Disallow: /calendar
+Disallow: /finance
+Disallow: /usage
+Disallow: /signin
+Disallow: /signup
+Disallow: /recover
+
+Sitemap: https://vertex.app/sitemap.xml

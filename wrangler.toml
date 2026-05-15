@@ -1,0 +1,9 @@
+name = "nivo-root"
+compatibility_date = "2026-04-17"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = "dist/client"
+
+[vars]
+CONVEX_DEPLOYMENT = "prod:effervescent-leopard-444"
+VITE_CONVEX_URL = "https://effervescent-leopard-444.convex.cloud"
+VITE_SITE_URL = "https://vertex.app"

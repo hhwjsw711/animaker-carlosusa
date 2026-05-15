@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Environment variables — NEVER commit these
+.env
+.env.local
+.env.*.local
+
+# Convex auto-generates this on `npx convex dev` / `deploy`
+convex/_generated/
+
+# TypeScript build cache
+*.tsbuildinfo
+node_modules/.tmp/
+
+# Editor / OS
+.DS_Store
+.vscode/
+*.local
+
+# Wrangler
+.wrangler/
