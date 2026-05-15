@@ -240,15 +240,13 @@ export const sendMessage = action({
     }
 
     // Move Bunny-backed attachments from pendingUploads to chatAttachments.
-    const bunnyAttachments = attachments?.filter(
-      (a): a is { bunnyPath: string; size: number } => typeof a.bunnyPath === "string",
-    );
+    const bunnyAttachments = attachments?.filter((a) => typeof a.bunnyPath === "string");
     if (bunnyAttachments && bunnyAttachments.length > 0) {
       await ctx.runMutation(internal.chatAttachments.mutations.registerAttachments, {
         userId,
         threadId,
         files: bunnyAttachments.map((a) => ({
-          bunnyPath: a.bunnyPath,
+          bunnyPath: a.bunnyPath!,
           size: a.size,
         })),
       });
