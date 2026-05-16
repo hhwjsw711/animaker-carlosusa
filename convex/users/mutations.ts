@@ -181,6 +181,26 @@ export const uploadProfilePhoto = action({
   },
 });
 
+export const completeOnboarding = mutation({
+  args: {
+    useCase: v.union(
+      v.literal("customers"),
+      v.literal("chat"),
+      v.literal("automation"),
+      v.literal("all"),
+    ),
+  },
+  handler: async (ctx, { useCase }) => {
+    const userId = await getAuthUserId(ctx);
+    if (!userId) throw new Error("Not authenticated");
+
+    await ctx.db.patch(userId, {
+      onboardingCompleted: true,
+      onboardingUseCase: useCase,
+    });
+  },
+});
+
 export const updateProfile = mutation({
   args: {
     name: v.optional(v.string()),
