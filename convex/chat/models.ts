@@ -112,6 +112,7 @@ export const models = [
     provider: "Qwen",
     reasoning: { effort: "high" } satisfies ORReasoning,
     providerPreferences: { order: ["novita"], allow_fallbacks: true } satisfies ORProviderPreferences,
+    isDefault: true,
   },
   // OpenAI
   {
@@ -138,7 +139,6 @@ export const models = [
     provider: "Google",
     reasoning: { effort: "high" } satisfies ORReasoning,
     providerPreferences: { order: ["google-ai-studio"], allow_fallbacks: true } satisfies ORProviderPreferences,
-    isDefault: true,
   },
   // Moonshot
   {
